@@ -11,9 +11,10 @@ pwd  = 'lin32ledi'
 host = '127.0.0.1'
 db   = 'stocksdb'
 
+# 20220711 表格名稱要用小寫；因為當初資料庫是建小寫，大寫在linux上執行程式會找不到table
 # margin_trading : 融資; short_selling: 融券
 select_sql = "SELECT DATE, START_PRICE, HIGH_PRICE, LOW_PRICE, END_PRICE, VOLUME, MARGIN_TRADING, \
-SHORT_SELLING FROM TAIWAN_DATA_POLARIS_STOCKS WHERE STOCK_NO = %s ORDER BY DATE "
+SHORT_SELLING FROM taiwan_data_polaris WHERE STOCK_NO = %s ORDER BY DATE "
 
 cnx = mysql.connector.connect(user=user, password=pwd, host=host, database=db)
 cursor = cnx.cursor()
